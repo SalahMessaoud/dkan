@@ -16,6 +16,7 @@ default:
       - Drupal\DKANExtension\Context\HarvestSourceContext
       - Drupal\DKANExtension\Context\WorkflowContext
       - Drupal\DKANExtension\Context\DatasetAutoFillContext
+      - Drupal\DKANExtension\Context\LinkcheckerContext
       - Drupal\DKANExtension\Context\DatasetContext:
         - fields:
             title: title

@@ -99,10 +99,10 @@ function dkan_linkchecker_views_query_alter(&$view, &$query) {
           'type' => 'OR',
         );
 
+        unset($query->where[1]['conditions'][3]);
         $query->table_queue['node_linkchecker_node__field_data_field_public_access_level']['join']->type = 'LEFT';
         $query->add_where(1, db_or()->condition(
-          'node_linkchecker_node__field_data_field_public_access_level.field_public_access_level_value',
-          $level));
+          'node_linkchecker_node__field_data_field_public_access_level.field_public_access_level_value', $level)->condition('node_linkchecker_node.type', 'harvest_source'));
         break;
 
       case 'private':
@@ -135,8 +135,7 @@ function dkan_linkchecker_views_query_alter(&$view, &$query) {
 
         $query->table_queue['node_linkchecker_node__field_data_field_public_access_level']['join']->type = 'LEFT';
         $query->add_where(1, db_or()->condition(
-          'node_linkchecker_node__field_data_field_public_access_level.field_public_access_level_value',
-          $level));
+          'node_linkchecker_node__field_data_field_public_access_level.field_public_access_level_value', $level));
         break;
 
       case 'restricted':
@@ -169,8 +168,7 @@ function dkan_linkchecker_views_query_alter(&$view, &$query) {
 
         $query->table_queue['node_linkchecker_node__field_data_field_public_access_level']['join']->type = 'LEFT';
         $query->add_where(1, db_or()->condition(
-          'node_linkchecker_node__field_data_field_public_access_level.field_public_access_level_value',
-          $level));
+          'node_linkchecker_node__field_data_field_public_access_level.field_public_access_level_value', $level));
         break;
 
       default:
